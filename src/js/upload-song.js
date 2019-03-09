@@ -29,7 +29,7 @@
 	            },
 	            'BeforeUpload': function(up, file) {
 	                // 每个文件上传前，处理相关的事情
-	                // window.eventHub.emit('beforeUpload')
+	                window.eventHub.emit('beforeUpload')
 	            },
 	            'UploadProgress': function(up, file) {
 	                // 每个文件上传时，处理相关的事情
@@ -40,13 +40,13 @@
 	                // 
 	            },
 	            'FileUploaded': function(up, file, info) {
-	            	// window.eventHub.emit('afterUpload')
+	            	window.eventHub.emit('afterUpload')
 
 	                var domain = up.getOption('domain')
 	                var response = JSON.parse(info.response)
 	                var song = response.key
 	                var url = domain + '/' + encodeURIComponent(response.key)
-	                uploadStatus.innerText = url
+	                uploadStatus.innerText = '上传完毕'
 
 	                var obj = {song, url}
 

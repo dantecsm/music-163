@@ -16,7 +16,8 @@
 					<input name="url" type="text" value="__url__">
 				</div>
 				<div class="row action">
-					<input type="submit" value="保存">
+					<input id="songFormSav" type="submit" value="保存">
+					<input id="songFormDel" type="button" value="删除">
 				</div>
 			</form>
 		`,
@@ -93,6 +94,18 @@
 				window.eventHub.emit('update', JSON.parse(JSON.stringify(this.model.data)))
 			})
 		},
+		delete() {
+			console.log('尝试删除 ' + this.model.data.id)
+
+			var song = AV.Object.createWithoutData('Song', this.model.data.id)
+			song.destroy().then(function (success) {
+				console.log('删除成功')
+			}).then(() => {
+				window.eventHub.emit('delete', this.model.data)
+				this.model.data = {}
+				window.eventHub.emit('new')
+			})
+		},
 		bindEvents() {
 			$(this.view.el).on('submit', 'form', e => {
 				e.preventDefault()
@@ -101,6 +114,13 @@
 					this.update()
 				} else {
 					this.create()
+				}
+			})
+			$(this.view.el).on('click', '#songFormDel', e => {
+				e.preventDefault()
+				
+				if(this.model.data.id) {
+					this.delete()
 				}
 			})
 		},

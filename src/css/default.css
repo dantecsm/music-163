@@ -96,6 +96,7 @@
 		background: white;
 		border: 1px solid #666;
 		outline: none;
+		cursor: pointer;
 	}
 
 	form .row {
@@ -114,4 +115,12 @@
 
 	form .action {
 		padding-left: calc(4em + 10px);
+	}
+
+	form .action input {
+		margin-right: 10px;
+	}
+
+	form .action input:nth-child(2) {
+		color: red;
 	}

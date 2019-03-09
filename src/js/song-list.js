@@ -56,6 +56,15 @@
 				this.model.data.songs.push(song)
 				this.view.render(this.model.data.songs)
 			})
+			window.eventHub.on('delete', song => {
+				let songs = this.model.data.songs
+				for(let i=0; i<songs.length; i++) {
+					if(songs[i].id === song.id) {
+						songs.splice(i, 1)
+					}
+				}
+				this.view.render(songs)
+			})
 			window.eventHub.on('new', () => {
 				this.clearActive()
 			})
