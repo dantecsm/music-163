@@ -3,40 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>管理页面</title>
+	<link rel="stylesheet" href="./css/default.css">
+	<link rel="stylesheet" href="./css/loading.css">
 </head>
 <body>
-	
-	<audio controls src=""></audio>
-	<div id="yyy">
-		<button id="xxx">upload</button>
-	</div>
+	<div class="page">
+		<aside>
+		<div id="newSong" class="newSong"></div>
+		<div id="songList" class="songList"></div>
+		<div class="uploadArea">
+			<div id="uploadContainer" class="draggable">
+				<div id="uploadButton" class="clickable">
+					<span>点击或拖曳文件</span>
+					<p>文件大小不能超过 40MB </p>
+				</div>
+			</div>
+			<div id="uploadStatus"></div>
+		</div>
+	</aside>
+	<main></main>
+	</div> <!-- page -->
+	<div class="loading"></div>
 
-
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+	<script src='./js/initializers/av.js'></script>
+	<script src="../vendors/moxie.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/plupload/js/plupload.min.js"></script>
 	<script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
-	<!-- <script>
-		var APP_ID = 'EK8Wxl2G3FvfHSnVxy8pbn40-gzGzoHsz';
-		var APP_KEY = 'lPKlY3ucjPhYfrGsI4EFCabz';
-
-		AV.init({
-		appId: APP_ID,
-		appKey: APP_KEY
-		});
-
-		var TestObject = AV.Object.extend('Song');
-		var testObject = new TestObject();
-		testObject.save({
-			name: 'test',
-			singer: 'test',
-			url: 'test'
-		}).then(function(object) {
-			alert('LeanCloud Rocks!');
-		}, () => {
-			alert('fuck!');
-		})
-	</script> -->
-	<script>
-	</script>
+	<script src="./js/eventHub.js"></script>
+	<script src="./js/song-form.js"></script>
+	<script src="./js/song-list.js"></script>
+	<script src="./js/new-song.js"></script>
+	<script src="./js/upload-song.js"></script>
+	<script src="./js/loading.js"></script>
 </body>
 </html>
