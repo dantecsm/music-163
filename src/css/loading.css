@@ -1,11 +1,21 @@
-@keyframes loading {
+@keyframes flip {
 	0% {
-		transform: scale(0);
+		transform: rotateY(0) rotateX(0);
+	}
+	25% {
+		transform: rotateY(180deg) rotateX(0);
+	}
+	50% {
+		transform: rotateY(180deg) rotateX(180deg);
+	}
+	75% {
+		transform: rotateY(360deg) rotateX(180deg);
 	}
 	100% {
-		transform: scale(1);
+		transform: rotateY(360deg) rotateX(360deg);
 	}
 }
+
 .loading {
 	visibility: hidden;
 	position: fixed;
@@ -16,19 +26,25 @@
 	z-index: 1;
 	background-color: rgba(0, 0, 0, .2);
 }
+
 .loading::before {
 	content: '';
-	position: absolute;
-	width: 100px;
-	height: 100px;
-	top: 50%;
-	left: 50%;
-	margin-top: -50px;
-	margin-left: -50px;
-	border-radius: 50%;
-	background: #afa;
-	animation: loading 1s infinite linear alternate-reverse;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -25px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 1px 1px rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, .2);
+    transform-style: preserve-3d;
+    perspective: 800px;
+    opacity: .75;
+    animation: flip 2s infinite linear;
 }
+
 .loading.active {
 	visibility: visible;
 }
