@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>我的云音乐</title>
+	<link rel="stylesheet" href="./css/loadingNewestMusic.css">
 	<link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
@@ -56,50 +57,7 @@
 					<section class="newest">
 						<h2 class="sectionTitle">最新音乐</h1>
 						<ul class="newestSongs">
-							<li class="songItem">
-								<div class="songMsg">
-									<h3>歌名</h3>
-									<p>歌手</p>
-								</div>
-								<div class="logo">
-									<svg class="icon" aria-hidden="true">
-									    <use xlink:href="#icon-bofang"></use>
-									</svg>
-								</div>
-							</li>
-							<li class="songItem">
-								<div class="songMsg">
-									<h3>歌名</h3>
-									<p>歌手</p>
-								</div>
-								<div class="logo">
-									<svg class="icon" aria-hidden="true">
-									    <use xlink:href="#icon-bofang"></use>
-									</svg>
-								</div>
-							</li>
-							<li class="songItem">
-								<div class="songMsg">
-									<h3>歌名</h3>
-									<p>歌手</p>
-								</div>
-								<div class="logo">
-									<svg class="icon" aria-hidden="true">
-									    <use xlink:href="#icon-bofang"></use>
-									</svg>
-								</div>
-							</li>
-							<li class="songItem">
-								<div class="songMsg">
-									<h3>歌名</h3>
-									<p>歌手</p>
-								</div>
-								<div class="logo">
-									<svg class="icon" aria-hidden="true">
-									    <use xlink:href="#icon-bofang"></use>
-									</svg>
-								</div>
-							</li>
+							<div class="loading active"></div>
 						</ul>
 					</section>
 					<section class="footer">
@@ -120,8 +78,11 @@
 		</main>
 	</div>
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+	<script src="./js/initializers/av.js"></script>
 	<script src="//at.alicdn.com/t/font_1084649_wceh0mya4tf.js"></script>
 	<script src="./js/admin/eventHub.js"></script>
+	<script src="./js/index/loading.js"></script>
 	<script src="./js/index/tabs.js"></script>
 	<script src="./js/index/page-1.js"></script>
 	<script src="./js/index/page-2.js"></script>
