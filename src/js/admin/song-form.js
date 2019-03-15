@@ -19,6 +19,10 @@
 					<label for="">封面</label>
 					<input name="cover" type="text" value="__cover__">
 				</div>
+				<div class="row">
+					<label for="">歌词</label>
+					<textarea cols=50 rows=10 name="lyric" type="text">__lyric__</textarea>
+				</div>
 				<div class="row action">
 					<input id="songFormSav" type="submit" value="保存">
 					<input id="songFormDel" type="button" value="删除">
@@ -27,8 +31,10 @@
 		`,
 		render(data = {}) {
 			let html = this.template
-			let placeHolders = ['song', 'singer', 'url', 'id', 'cover']
-			placeHolders.map(string => html = html.replace(`__${string}__`, data[string] || ''))
+			let placeHolders = ['song', 'singer', 'url', 'id', 'cover', 'lyric']
+			placeHolders.map(string => {
+				html = html.replace(`__${string}__`, data[string] || '')
+			})
 			$(this.el).html(html)
 			if(data.id) {
 				$(this.el).prepend('<h1>编辑歌曲</h1>')
@@ -43,7 +49,7 @@
 
 	let model = {
 		data : {
-			song: '', singer: '', url: '', id: '', cover: ''
+			song: '', singer: '', url: '', id: '', cover: '', lyric: ''
 		},
 		create(data) {
 			var NewSong = AV.Object.extend('Song');
@@ -52,6 +58,7 @@
 			newSong.set('singer', data.singer);
 			newSong.set('url', data.url)
 			newSong.set('cover', data.cover)
+			newSong.set('lyric', data.lyric)
 			return newSong.save().then(obj => {
 				let {id, attributes} = obj
 				this.data = {id, ...attributes}
@@ -63,6 +70,7 @@
 			song.set('song', data.song)
 			song.set('url', data.url)
 			song.set('cover', data.cover)
+			song.set('lyric', data.lyric)
 			return song.save().then(response => {
 				Object.assign(this.data, data)
 				return response
@@ -79,7 +87,7 @@
 			this.bindEventHub()
 		},
 		create() {
-			let needs = 'singer song url cover'.split(' ')
+			let needs = 'singer song url cover lyric'.split(' ')
 			let data = {}
 			needs.map(string => {
 				data[string] = $(this.view.el).find(`[name=${string}]`).val()
@@ -90,7 +98,7 @@
 			})
 		},
 		update() {
-			let needs = 'singer song url cover'.split(' ')
+			let needs = 'singer song url cover lyric'.split(' ')
 			let data = {}
 			needs.map(string => {
 				data[string] = $(this.view.el).find(`[name=${string}]`).val()
@@ -139,7 +147,7 @@
 				if(!this.model.data.id) {
 					Object.assign(this.model.data, data)
 				} else {
-					this.model.data = {song: '', singer: '', url: '', id: '', cover: ''}
+					this.model.data = {song: '', singer: '', url: '', id: '', cover: '', lyric: ''}
 				}
 				this.view.render(this.model.data)
 			})
