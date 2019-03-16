@@ -64,6 +64,10 @@
 	height: 72px;
 	overflow: hidden;
 }
+.song-description .line {
+	height: 24px;
+	overflow: hidden;	
+}
 .song-description .line.active {
 	color: #fff;
 }

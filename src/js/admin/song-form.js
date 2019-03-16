@@ -102,6 +102,7 @@
 			this.model.create(data).then(() => {
 				this.view.reset()
 				window.eventHub.emit('create', this.model.data)
+				alert('成功新建歌曲!')
 			})
 		},
 		update() {

@@ -31,6 +31,10 @@
 		flex-grow: 1;
 	}
 
+	.page >preview {
+		width: 30vw;
+	}
+
 	/* topbar */
 	.topbar {
 		padding: 2vh;
@@ -128,6 +132,7 @@
 
 	main .form-wrapper {
 		padding: 20px;
+		display: inline-block;
 	}
 
 	form {
@@ -190,4 +195,24 @@
 
 	form .action input {
 		margin-right: 10px;
+	}
+
+	/* preview */
+	.page >preview {
+		background-color: #fafafa;
+	}
+
+	preview .spirit {
+		cursor: pointer;
+    position: fixed;
+    width: 100px;
+    height: 120px;
+    right: 20px;
+    bottom: 20px;
+    background: transparent url('../img/miku002.png') center center no-repeat;
+    background-size: contain;
+	}
+
+	preview .spirit.active {
+		background-image: url('../img/miku.gif');
 	}
