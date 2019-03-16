@@ -22,7 +22,8 @@
     	})
     	$('.lyric .lines').append(array)
 
-    	$(this.el).find('.pageBackground').css({'background-image': `url(${song.cover})`})
+    	song.cover = song.cover || './img/disc_default.png'
+        $(this.el).find('.pageBackground').css({'background-image': `url(${song.cover})`})
     	$(this.el).find('.cover').css({'background-image': `url(${song.cover})`})
     	$(this.el).find('.song-description h1').text(song.song)
     	let audio = $(this.el).find('audio')[0]

@@ -18,11 +18,19 @@
       this.model = model
       this.view.init()
       this.bindEventHub()
+      this.loadModule('./js/index/page-3-1.js')
+      this.loadModule('./js/index/page-3-2.js')
     },
     bindEventHub() {
     	window.eventHub.on('selectTab', tabName => {
     		tabName === 'page-3'? this.view.show(): this.view.hide()
     	})
+    },
+    loadModule(src) {
+      let script = document.createElement('script')
+      script.src = src
+      script.onload = () => {console.log(src + ' 加载完毕')}
+      document.body.append(script)
     }
   }
   controller.init(view, model)
