@@ -5,6 +5,8 @@
 	ul,ol {list-style: none;}
 	a {color: inherit;text-decoration: none;}
 	input {font: inherit;}
+	input[type="file"] {display: none;}
+	textarea {resize: none;}
 
 	body {
 		font-size: 12px;
@@ -12,9 +14,13 @@
 	}
 
 	/* layout */
+	.topbar {
+		height: 9vh;
+	}
+
 	.page {
 		display: flex;
-		height: 100vh;
+		height: 91vh;
 	}
 
 	.page >aside {
@@ -23,6 +29,17 @@
 
 	.page >main {
 		flex-grow: 1;
+	}
+
+	/* topbar */
+	.topbar {
+		padding: 2vh;
+		background-color: #b44022;
+	}
+
+	.topbar .logo {
+		width: 27.5vh;
+		height: 5vh;
 	}
 
 	/* aside */
@@ -34,10 +51,11 @@
 	#newSong {
 		text-align: center;
 		padding: 10px;
+		display: none;
 	}
 
 	#newSong.active {
-		background-color: #d4d4d4;
+		background-color: #e6e7ea;
 	}
 
 	.songList {
@@ -45,15 +63,35 @@
 		overflow: auto;
 	}
 
+	.songList li {
+		position: relative;
+	}
+
+	.songList li:nth-child(odd) {
+		background-color: #f7f7f7;
+	}
+
+	.songList li:nth-child(even) {
+		background-color: #efefef;
+	}
+
 	.songList li div {
 		margin-left: 20px;
 		margin-right: 20px;
 		padding: 10px;
-		border-bottom: 1px solid #ddd;
 	}
 
 	.songList li.active {
-		background: #ddd;
+		background-color: #c7c7c7;
+	}
+
+	.songList li.active::before {
+		content: '';
+		position: absolute;
+		width: 4px;
+		height: 90%;
+		top: 5%;
+		background-color: #b44022;
 	}
 
 	.draggable {
@@ -61,6 +99,7 @@
 		border: 2px dashed #ddd;
 		line-height: 1.2;
 	}
+
 	.clickable {
 		cursor: pointer;
 		display: flex;
@@ -71,16 +110,30 @@
 		padding-bottom: 20px;
 	}
 
+	#uploadStatus {
+		display: none;
+	}
+
 	/* main */
 	.page >main {
 		padding: 20px;
-		background: #d4d4d4;
+		padding-left: 50px;
+		background-color: #fafafa;
+	}
+
+	main h1 {
+		font-weight: 100;
+		font-size: 27px;
+	}
+
+	main .form-wrapper {
+		padding: 20px;
 	}
 
 	form {
 		font-size: 14px;
+		display: inline-block;
 	}
-
 
 	form input[type=text] {
 		padding: 5px 8px;
@@ -88,15 +141,28 @@
 		border-radius: 5px;
 	}
 
-	form input[type=submit],
-	form input[type=button],
-	form button {
-		padding: 4px 8px;
-		border-radius: 5px;
-		background: white;
-		border: 1px solid #666;
+	form .action input[type=submit],
+	form .action input[type=button],
+	form .action button {
+		padding: 5px 18px;
+		border-radius: 7px;
+		background: #b44022;
+		color: #fff;
+		border: 1px solid;
 		outline: none;
 		cursor: pointer;
+	}
+
+	form input[type="file"] {
+		color: transparent;	
+		max-width: 6em;
+	}
+
+	form input#songFormCoverUp,
+	form input#songFormLyricUp {
+		color: #000;
+		background: #ddd;
+		border: 1px dashed #c1c1c1;
 	}
 
 	form .row {
@@ -104,6 +170,11 @@
 		display: flex;
 		min-height: 40px;
 		align-items: center;
+	}
+
+	form .coverBtn {
+		padding-left: 4px;
+		display: none;
 	}
 
 	form label {
@@ -119,8 +190,4 @@
 
 	form .action input {
 		margin-right: 10px;
-	}
-
-	form .action input:nth-child(2) {
-		color: red;
 	}

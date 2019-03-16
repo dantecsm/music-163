@@ -8,7 +8,8 @@
 		render(data) {
 			$(this.el).html(this.template)
 			$(this.el).find('ul').empty()
-			let $liList = data.map(song => $(`<li><div data-id=${song.id}>${song.song}</div></li>`))
+			let $liList = data.filter(song => !!song.song)
+			.map(song => $(`<li><div data-id=${song.id}>${song.song}</div></li>`))
 			$(this.el).find('ul').append($liList)
 		},
 		activeItem(li) {

@@ -2,32 +2,39 @@
 	let view = {
 		el: '.page >main',
 		template: `
-			<form action="post">
-				<div class="row">
-					<label for="">歌曲</label>
-				<input type="text" name="song" value="__song__">
-				</div>
-				<div class="row">
-					<label for="">歌手</label>
-					<input name="singer" type="text" value="__singer__">
-				</div>
-				<div class="row">
-					<label for="">外链</label>
-					<input name="url" type="text" value="__url__">
-				</div>
-				<div class="row">
-					<label for="">封面</label>
-					<input name="cover" type="text" value="__cover__">
-				</div>
-				<div class="row">
-					<label for="">歌词</label>
-					<textarea cols=50 rows=10 name="lyric" type="text">__lyric__</textarea>
-				</div>
-				<div class="row action">
-					<input id="songFormSav" type="submit" value="保存">
-					<input id="songFormDel" type="button" value="删除">
-				</div>
-			</form>
+			<div class="form-wrapper">
+				<form action="post">
+					<div class="row">
+						<label for="">歌曲</label>
+					<input type="text" name="song" value="__song__">
+					</div>
+					<div class="row">
+						<label for="">歌手</label>
+						<input name="singer" type="text" value="__singer__">
+					</div>
+					<div class="row">
+						<label for="">外链</label>
+						<input name="url" type="text" value="__url__">
+					</div>
+					<div class="row">
+						<label for="">封面</label>
+						<input name="cover" type="text" value="__cover__">
+						<div class="coverBtn">
+							<input name="coverUp" type="file" />
+						</div>
+					</div>
+					<div class="row">
+						<label for="">歌词</label>
+						<textarea cols=50 rows=10 name="lyric" type="text">__lyric__</textarea>
+					</div>
+					<div class="row action">
+						<input id="songFormCoverUp" type="button" value="选择封面">
+						<input id="songFormLyricUp" type="button" value="选择歌词">
+						<input id="songFormSav" type="submit" value="保存">
+						<input id="songFormDel" type="button" value="删除">
+					</div>
+				</form>
+			</div>
 		`,
 		render(data = {}) {
 			let html = this.template
@@ -135,7 +142,21 @@
 				
 				if(this.model.data.id) {
 					this.delete()
+				} else {
+					alert('请选择一首歌曲')
 				}
+			})
+			$(this.view.el).on('click', '#songFormCoverUp', e => {
+				e.preventDefault()
+				
+				window.eventHub.emit('uploadCover')
+				
+			})
+			$(this.view.el).on('click', '#songFormLyricUp', e => {
+				e.preventDefault()
+				
+				window.eventHub.emit('uploadLyric')
+				
 			})
 		},
 		bindEventHub() {
@@ -150,6 +171,12 @@
 					this.model.data = {song: '', singer: '', url: '', id: '', cover: '', lyric: ''}
 				}
 				this.view.render(this.model.data)
+			})
+			window.eventHub.on('fillCover', string => {
+				$(this.view.el).find(`[name="cover"]`).val(string)
+			})
+			window.eventHub.on('fillLyric', string => {
+				$(this.view.el).find(`[name="lyric"]`).val(string)
 			})
 		}
 	}
