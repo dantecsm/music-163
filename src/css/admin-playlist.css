@@ -111,14 +111,36 @@ form .row.action {
 section.songModule {}
 
 .songModule ul.songs {
-	border: 1px solid;
+  border: 1px solid;
 }
 
 ul.songs >li {
-	border-bottom: 1px solid;
-	margin: 0 5px;
+  position: relative;
+  border-bottom: 1px solid;
+  margin: 0 5px;
 }
 
 ul.songs >li.active {
-	background-color: #ddd;
+  background-color: #ddd;
+}
+
+ul.songs p {
+  max-width: 20vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+ul.songs .icon {
+  position: absolute;
+  right: 1em;
+  top: 0;
+}
+
+.listedSongs .add {
+  display: none;
+}
+
+.unListedSongs .remove {
+  display: none;
 }

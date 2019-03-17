@@ -50,7 +50,7 @@
     		window.eventHub.emit('createSongList')
     	})
     	$(this.view.el).on('click', 'li', e => {
-    		let $li = $(e.target)
+    		let $li = $(e.currentTarget)
     		$li.addClass('active').siblings('.active').removeClass('active')
 
             let data = {}
