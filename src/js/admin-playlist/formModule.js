@@ -83,6 +83,7 @@
     		this.model.data.songListId = id
     		this.model.data.formData = {songListName, cover, resume}
 		    this.view.render(this.model.data)
+            window.eventHub.emit('showListedSongs', id)
     	})
     },
     bindEvents() {

@@ -29,11 +29,12 @@
     },
     fetch(where, id) {
   		let songList = AV.Object.createWithoutData('SongLists', id)
-  		let query = new AV.Query('Song')
-  		query[where]('in', songList)
-  		return query.find().then(songs => {
-  			this.data.lists = songs.map(song => {
-  				return {id: song.id, name: song.attributes.song}
+  		let query = new AV.Query('SongListSongMap')
+      query.include('song')
+  		query[where]('songList', songList)
+  		return query.find().then(rels => {
+  			this.data.lists = rels.map(rel => {
+          return {id: rel.get('song').id, name: rel.get('song').attributes.song}
   			})
   		})
     }
@@ -53,24 +54,34 @@
     	$(this.view.el).on('click', '.add', e => {
     		let $li = $(e.currentTarget).closest('li')
     		let songId = $li.attr('data-song-id')
-				let song = AV.Object.createWithoutData('Song', songId)
-				let songList = AV.Object.createWithoutData('SongLists', this.model.data.songListId)
-				song.set('in', songList)
-				song.save().then(() => {
+        let songListId = this.model.data.songListId
+				
+        let song = AV.Object.createWithoutData('Song', songId)
+				let songList = AV.Object.createWithoutData('SongLists', songListId)
+        let songListSongMap = new AV.Object('SongListSongMap')
+        songListSongMap.set('song', song)
+        songListSongMap.set('songList', songList)
+
+				songListSongMap.save().then(() => {
 					alert('成功添加歌曲到歌单')
 					this.reload()
 				})
     	})
     	$(this.view.el).on('click', '.remove', e => {
     		let $li = $(e.currentTarget).closest('li')
-    		let songId = $li.attr('data-song-id')
-				let song = AV.Object.createWithoutData('Song', songId)
-				let songList = AV.Object.createWithoutData('SongLists', this.model.data.songListId)
-				song.set('in', null)
-				song.save().then(() => {
-					alert('成功从歌单移除歌曲')
-					this.reload()
-				})
+        let songId = $li.attr('data-song-id')
+        let songListId = this.model.data.songListId
+
+        let q1 = `select * from SongListSongMap where songList = pointer("SongLists", "${songListId}") and song = pointer("Song", "${songId}")`
+        
+        AV.Query.doCloudQuery(q1).then((data) => {
+          let q2 = `delete from SongListSongMap where objectId = "${data.results[0].id}"`
+          
+          AV.Query.doCloudQuery(q2).then(() => {
+            alert('成功从歌单中删除歌曲')
+            this.reload()
+          })
+        })
     	})
     },
     bindEventHub() {
@@ -87,11 +98,23 @@
     },
     reload() {
     	let {status, songListId} = this.model.data
-    	let where = status === 'showListedSongs'? 'equalTo': 'notEqualTo'
+    	let where = status === 'showListedSongs'? 'in': 'not in'
 
-    	this.model.fetch(where, songListId).then(() => {
-    		this.view.render(this.model.data)
-    	})
+      let cql = `select song from Song where objectId ${where} (
+        select song.objectId from SongListSongMap where songList = pointer("SongLists", "${songListId}"))`
+      AV.Query.doCloudQuery(cql).then(data => {
+        console.log(status)
+        console.log(data.results)
+        this.model.data.lists = data.results.map(r => {
+          return {id: r.id, name: r.attributes.song}
+        })
+        this.view.render(this.model.data)
+      })
+
+
+    	// this.model.fetch(where, songListId).then(() => {
+    	// 	this.view.render(this.model.data)
+    	// })
     }
   }
   controller.init(view, model)
