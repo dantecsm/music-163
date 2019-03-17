@@ -12,39 +12,8 @@
     <div class="logo">网易云音乐</div>
   </div>
   <main>
-    <section class="listModule">
-      <ul class="songLists">
-        <li>歌单序号1</li>
-        <li class="active">歌单序号2</li>
-        <li>歌单序号3</li>
-        <li>歌单序号4</li>
-        <li>歌单序号5</li>
-      </ul>
-      <div class="newListBtn">新建歌单</div>
-    </section>
-    <section class="formModule">
-      <h2>编辑歌单</h2>
-      <form action="">
-        <div class="row">
-          <label for="">歌单名称</label>
-          <input type="text">
-        </div>
-        <div class="row">
-          <label for="">歌单封面</label>
-          <input type="text">
-        </div>
-        <div class="row">
-          <label for="">歌单简介</label>
-          <textarea cols=30 rows=15></textarea>
-        </div>
-        <div class="row action">
-          <input type="submit" value="保存">
-          <input type="button" value="删除">
-          <input type="button" value="显示歌曲">
-          <input type="button" value="添加歌曲">
-        </div>
-      </form>
-    </section>
+    <section class="listModule"></section>
+    <section class="formModule"></section>
     <section class="songModule">
       <ul class="songs">
         <li>歌曲序号1</li>
@@ -55,6 +24,12 @@
       </ul>
     </section>
   </main>
+  <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+	<script src='./js/initializers/av.js'></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./js/admin/eventHub.js"></script>
+  <script src="./js/admin-playlist/listModule.js"></script>
+  <script src="./js/admin-playlist/formModule.js"></script>
 </body>
 
 </html>

@@ -39,20 +39,20 @@ on('reloadSongList')
 
 第二系统：
 初始化会
-  赋值 status 为 createMode
+  赋值 status 为 creating
   渲染空模型到视图
 on('createSongList')
-  会更改 status 为 createMode，更改表头为“创建歌单”
+  会更改 status 为 creating，更改表头为“创建歌单”
   会将 songListId 赋值为空
   清理表单
 on('selectSongList', selectedSongListId)
-  会更改 status 为 editMode，更改表头为“编辑歌单”
+  会更改 status 为 editing，更改表头为“编辑歌单”
   会将 songListId 赋值为 selectedSongListId
   从 leanCloud 查询 songListId 获取数据填充 formData
   渲染模型到视图
 点击改会
   收集表单上的数据为 formData
-  读取 status 为 editMode 或 createMode
+  读取 status 为 editing 或 creating
   根据 status 命令模型命令 leanCloud 更新或创建歌单数据
   then 里 emit('reloadSongList')
 点击删会
