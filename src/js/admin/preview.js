@@ -24,8 +24,13 @@
 			  	src && audio.play()
 			  }
 			  audio.paused? audio.play(): audio.pause()
-			  audio.paused? $(e.currentTarget).removeClass('active'): $(e.currentTarget).addClass('active')
 			})
+      $('audio')[0].onpause = function() {
+        $('.spirit').removeClass('active')
+      }
+      $('audio')[0].onplaying = function() {
+        $('.spirit').addClass('active')
+      }
     },
     bindEventHub() {
     	window.eventHub.on('select', data => {

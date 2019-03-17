@@ -1,0 +1,124 @@
+/* 默认样式 */
+* {margin: 0;padding: 0;}
+* {box-sizing: border-box;}
+*::after {box-sizing: border-box;}
+*::before {box-sizing: border-box;}
+ul,ol {list-style: none;}
+a {color: inherit;text-decoration: none;}
+input {font: inherit; border: none;}
+textarea {resize: none; border: none;}
+body {font-size: 15px;}
+
+/* 总体布局 */
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-color: #eee;
+}
+
+body >.topBar {
+	border: 1px solid;
+	height: 45px;
+}
+
+body >main {
+	border: 1px solid;
+	flex-grow: 1;
+}
+
+main {
+	display: flex;
+}
+
+main >section.listModule,
+main >section.songModule {
+	width: 25vw;
+	border: 1px solid;
+}
+
+main >section.formModule {
+	flex-grow: 1;
+	border: 1px solid;
+}
+
+/* 歌单列表模块 */
+section.listModule {
+	display: flex;
+	flex-direction: column;
+}
+
+.listModule ul.songLists {
+	border: 1px solid;
+	flex-grow: 1;
+	overflow: auto;
+}
+
+.listModule .newListBtn {
+	padding: 10px;
+	text-align: center;
+}
+
+ul.songLists >li {
+	border-bottom: 1px solid;
+	margin: 0 5px;
+}
+
+ul.songLists >li.active {
+	background-color: #ddd;
+}
+
+/* 表格模块 */
+section.formModule {}
+
+.formModule form {
+	border: 1px solid;
+	display: inline-block;
+}
+
+form .row {
+	margin: 10px;
+	display: flex;
+}
+
+form label {
+	width: 5em;
+	min-height: 40px;
+	display: flex;
+	align-items: center;
+}
+
+form input[type="text"],
+form textarea{
+	padding: 5px 8px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+form .row.action {
+	padding-left: 5em;
+}
+
+.row.action >input {
+	padding: 4px;
+	margin-right: 4px;
+	border-radius: 4px;
+	outline: none;
+	cursor: pointer;
+}
+
+/* 歌曲列表模块 */
+section.songModule {}
+
+.songModule ul.songs {
+	border: 1px solid;
+}
+
+ul.songs >li {
+	border-bottom: 1px solid;
+	margin: 0 5px;
+}
+
+ul.songs >li.active {
+	background-color: #ddd;
+}
