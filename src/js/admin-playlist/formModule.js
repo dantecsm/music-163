@@ -98,7 +98,22 @@
 				this.model.data.status === 'creating'? this.createSongList(): this.updateSongList()
     	})
     	$(this.view.el).on('click', '[name="songListDel"]', () => {
+    		console.log('尝试删除', this.model.data.songListId)
 
+				var songList = AV.Object.createWithoutData('SongLists', this.model.data.songListId)
+				songList.destroy().then(() => {
+					alert('歌单已移除！')
+					this.clearForm()
+					window.eventHub.emit('reloadSongList')
+				})
+    	})
+    	$(this.view.el).on('click', '[name="showListedSongs"]', () => {
+    		let id = this.model.data.songListId
+    		window.eventHub.emit('showListedSongs', id)
+    	})
+    	$(this.view.el).on('click', '[name="showUnListedSongs"]', () => {
+    		let id = this.model.data.songListId
+    		window.eventHub.emit('showUnListedSongs', id)
     	})
     },
     clearForm() {

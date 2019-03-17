@@ -14,11 +14,11 @@ selectSongList
 -reloadSongList
 
 reloadSongList
-showMySongs
-showOtherSongs
+showListedSongs
+showUnListedSongs
 
--showMySongs
--showOtherSongs
+-showListedSongs
+-showUnListedSongs
 
 
 第一系统：
@@ -59,17 +59,17 @@ on('selectSongList', selectedSongListId)
   根据自己的 songListId 命令模型命令 leanCloud 删除歌单
   then 里 emit('reloadSongList')
 点击查己会
-  根据自己的 songListId emit('showMySongs', songListId)
+  根据自己的 songListId emit('showListedSongs', songListId)
 点击查它会
-  根据自己的 songListId emit('showOtherSongs', songListId)
+  根据自己的 songListId emit('showUnListedSongs', songListId)
 
 第三系统：
 初始化会
   渲染空模型到视图
-on('showMySongs', songListId)
+on('showListedSongs', songListId)
   修改 status 为 showListedSongs
   调用重载工具
-on('showOtherSongs', songListId)
+on('showUnListedSongs', songListId)
   修改 status 为 showUnlistedSongs
   调用重载工具
 点击图标会
@@ -84,4 +84,13 @@ on('showOtherSongs', songListId)
   模型渲染到视图
 
 
+
+
+leanCloud 的一对多操作原理
+在多的一方放一个指针属性, 指向少的一方
+把既有对象添加到一个列表
+var 列表 = AV.Object.createWithoutData('Province', 数据行id)
+var 元素 = AV.Object.createWithoutData('City', 数据行id)
+元素.set('xx属性', 列表)
+元素.save()
 
