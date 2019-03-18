@@ -1,5 +1,4 @@
 {
-  // view
   let view = {
     el: '.newestSongs',
     template: `
@@ -28,8 +27,6 @@
     	$(this.el).append($liList)
     }
   }
-
-  // model
   let model = {
     data: {
     	songs: []
@@ -41,8 +38,6 @@
 			})
     }
   }
-
-  // controller
   let controller = {
     init(view, model) {
       this.view = view
@@ -54,7 +49,5 @@
       })
     }
   }
-
-  // boot mvc
   controller.init(view, model)
 }

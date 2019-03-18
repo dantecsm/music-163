@@ -9,7 +9,7 @@
     	let {lists} = data
     	let $liList = lists.map(list => {
     		let $li = $('<li></li>')
-    		$li.text(list.songListName)
+    		$li.html(`<div>${list.songListName}</div>`)
     		$li.attr('data-songList-id', list.id)
     		return $li
     	})

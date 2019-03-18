@@ -1,29 +1,39 @@
 {
-  // view
   let view = {
-    el: '.xxx',
-    template: ``,
-    render(data = {}) {}
+    el: '.recommendSongs',
+    render(data = {}) {
+      let list = data.list || []
+      let $liList = list.filter(obj => obj.songListName).splice(0, 6)
+      .map(obj => {
+        return $(`
+          <li class="songCover">
+            <img src=${obj.cover || "https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg"}>
+            <p>${obj.songListName}</p>
+          </li>
+        `)
+      })
+      $(this.el).append($liList)
+    }
   }
-
-  // model
   let model = {
-    data: {},
-    init() {},
-    fetch() {},
-    save() {}
+    data: {
+      list: []
+    },
+    init() {
+      var songLists = new AV.Query('SongLists')
+      return songLists.find().then(arr => {
+        this.data.list = arr.map(songList => {return {id: songList.id, ...songList.attributes}})
+      })
+    }
   }
-
-  // controller
   let controller = {
     init(view, model) {
       this.view = view
       this.model = model
-      this.model.init()
-      this.view.render(this.model.data)
+      this.model.init().then(() => {
+        this.view.render(this.model.data)
+      })
     }
   }
-
-  // boot mvc
   controller.init(view, model)
 }

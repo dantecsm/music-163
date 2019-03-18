@@ -11,10 +11,11 @@
       <div class="row">
         <label for="">歌单封面</label>
         <input name="cover" type="text" value=__cover__>
+        <input name="coverUp" id="coverUpBtn" type="button" value="···">
       </div>
       <div class="row">
         <label for="">歌单简介</label>
-        <textarea name="resume" cols=30 rows=15>__resume__</textarea>
+        <textarea name="resume" cols=50 rows=10>__resume__</textarea>
       </div>
       <div class="row action">
         <input name="songListSav" type="submit" value="保存">
@@ -25,14 +26,14 @@
     </form>
     `,
     render(data) {
-			let {formData, status} = data
+		let {formData, status} = data
     	let html = this.template
-			let needs = 'songListName cover resume'
-			needs.split(' ').map(string => {
-				html = html.replace(`__${string}__`, formData[string] || '')
-			})
-			html = html.replace(`__mode__`, status === 'creating'? '创建歌单': '编辑歌单')
-			$(this.el).html(html)
+		let needs = 'songListName cover resume'
+		needs.split(' ').map(string => {
+			html = html.replace(`__${string}__`, formData[string] || '')
+		})
+		html = html.replace(`__mode__`, status === 'creating'? '创建歌单': '编辑歌单')
+		$(this.el).html(html)
     }
   }
   let model = {
@@ -85,6 +86,9 @@
 		    this.view.render(this.model.data)
             window.eventHub.emit('showListedSongs', id)
     	})
+        window.eventHub.on('fillCover', url => {
+            $(this.view.el).find(`[name="cover"]`).val(url)
+        })
     },
     bindEvents() {
     	$(this.view.el).on('submit', 'form', e => {
@@ -116,6 +120,9 @@
     		let id = this.model.data.songListId
     		window.eventHub.emit('showUnListedSongs', id)
     	})
+        $(this.view.el).on('click', '[name="coverUp"]', () => {
+            window.eventHub.emit('uploadCover')
+        })
     },
     clearForm() {
     	this.model.data.formData = {}

@@ -53,15 +53,15 @@
 	            'FileUploaded': function(up, file, info) {
 	            	window.eventHub.emit('afterUpload')
 
-	                var domain = up.getOption('domain')
-	                var response = JSON.parse(info.response)
-	                var song = response.key
-	                var url = domain + '/' + encodeURIComponent(response.key)
-	                uploadStatus.innerText = '上传完毕'
+                var domain = up.getOption('domain')
+                var response = JSON.parse(info.response)
+                var song = response.key
+                var url = domain + '/' + encodeURIComponent(response.key)
+                uploadStatus.innerText = '上传完毕'
 
-	                var obj = {song, url}
+                var obj = {song, url}
 
-	                window.eventHub.emit('new', obj)
+                window.eventHub.emit('new', obj)
 	            },
 	            'Error': function(up, err, errTip) {
 	                // 
@@ -97,12 +97,12 @@
 	            'FileUploaded': function(up, file, info) {
 	            	window.eventHub.emit('afterUpload')
 
-	                var domain = up.getOption('domain')
-	                var response = JSON.parse(info.response)
-	                var url = domain + '/' + encodeURIComponent(response.key)
-	                uploadStatus.innerText = '上传完毕'
+                var domain = up.getOption('domain')
+                var response = JSON.parse(info.response)
+                var url = domain + '/' + encodeURIComponent(response.key)
+                uploadStatus.innerText = '上传完毕'
 
-	                window.eventHub.emit('fillCover', url)
+                window.eventHub.emit('fillCover', url)
 
 	            },
 	            'Error': function(up, err, errTip) {

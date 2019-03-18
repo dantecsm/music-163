@@ -28,15 +28,12 @@
     	songListId: ''
     },
     fetch(where, id) {
-  		let songList = AV.Object.createWithoutData('SongLists', id)
-  		let query = new AV.Query('SongListSongMap')
-      query.include('song')
-  		query[where]('songList', songList)
-  		return query.find().then(rels => {
-  			this.data.lists = rels.map(rel => {
-          return {id: rel.get('song').id, name: rel.get('song').attributes.song}
-  			})
-  		})
+      let cql = `select song from Song where objectId ${where} (select song.objectId from SongListSongMap where songList = pointer("SongLists", "${id}"))`
+      return AV.Query.doCloudQuery(cql).then(data => {
+        this.data.lists = data.results.map(r => {
+          return {id: r.id, name: r.attributes.song}
+        })
+      })
     }
   }
   let controller = {
@@ -99,22 +96,9 @@
     reload() {
     	let {status, songListId} = this.model.data
     	let where = status === 'showListedSongs'? 'in': 'not in'
-
-      let cql = `select song from Song where objectId ${where} (
-        select song.objectId from SongListSongMap where songList = pointer("SongLists", "${songListId}"))`
-      AV.Query.doCloudQuery(cql).then(data => {
-        console.log(status)
-        console.log(data.results)
-        this.model.data.lists = data.results.map(r => {
-          return {id: r.id, name: r.attributes.song}
-        })
+      this.model.fetch(where, songListId).then(() => {
         this.view.render(this.model.data)
       })
-
-
-    	// this.model.fetch(where, songListId).then(() => {
-    	// 	this.view.render(this.model.data)
-    	// })
     }
   }
   controller.init(view, model)
