@@ -107,8 +107,8 @@
     },
     getSongId() {
     	let hash = {}
-			window.location.search.substr(1).split('&').filter(v => v).map(v => hash[v.split('=')[0]] = v.split('=')[1])
-			return hash['id']
+		window.location.search.substr(1).split('&').filter(v => v).map(v => hash[v.split('=')[0]] = v.split('=')[1])
+		return hash['id']
     }
   }
   controller.init(view, model)

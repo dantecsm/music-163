@@ -6,6 +6,7 @@
     },
     show() {
     	this.$el.addClass('active')
+      window.eventHub.emit('focusInput')
     },
     hide() {
     	this.$el.removeClass('active')

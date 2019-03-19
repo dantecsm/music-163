@@ -177,15 +177,14 @@ main {
 	width: 100%;
 }
 
-/* page-3 */
+/* page-3-1 */
 .searchModule form {
   width: 100vw;
   height: 60px;
   border: 1px solid #eeeff0;
   padding: 15px 10px;
 }
-
-form .search {
+.searchModule .search {
   width: 100%;
   height: 30px;
   border-radius: 30px;
@@ -194,24 +193,20 @@ form .search {
   background-color: #ebecec;
   padding: 0 30px;
 }
-
-form .search::-webkit-input-placeholder{
+.searchModule .search::-webkit-input-placeholder{
   color: #c9c9c9;
 }
-
-form .row {
+.searchModule form .row {
   position: relative;
 }
-
-form .icon {
-  width: 19px;
-  height: 19px;
+.searchModule .icon {
+  width: 17px;
+  height: 17px;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
 }
-
-form .search-icon {
+.searchModule form .search-icon {
   position: absolute;
   width: 30px;
   height: 100%;
@@ -221,30 +216,84 @@ form .search-icon {
   justify-content: center;
   align-items: center;
 }
-
-
-
-.hotModule {
-  padding: 15px 10px 0;
+.searchModule form .clear-icon {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  display: none;
+}
+.searchModule form .clear-icon.active {
+  display: flex;
+}
+.searchModule .hint {
+  display: none;
+}
+.searchModule .hint.active {
+  display: block;
+}
+.searchModule .hint >p {
+  padding: 15px 10px;
+  font-size: 15px;
+  color: #507daf;
+  border-bottom: 1px solid #eeeff0;
+  display: none;
+}
+.searchModule .hint >p.active {
+	display: block;
+}
+.searchModule ul.hintList >li{
+  display: flex;
+  font-size: 15px;
+  padding-left: 9px;
+}
+.searchModule ul.hintList >li .icon {
+  width: 22px;
+  height: 22px;
+}
+.searchModule ul.hintList >li .search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchModule ul.hintList >li p {
+  padding: 12px;
+  border-bottom: 1px solid #eeeff0;
+  flex-grow: 1;
+}
+.searchModule .resultList {
+	display: none;
+}
+.searchModule .resultList.active {
+	display: block;
 }
 
+/* page-3-2 */
+.hotModule {
+  padding: 15px 10px 0;
+  display: none;
+}
+.hotModule.active {
+  display: block;
+}
 .hotModule h6 {
   color: #666;
   font-size: 12px;
   line-height: 12px;
 }
-
 .hotModule .tagBox {
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
 }
-
 .hotModule .tag {
   font-size: 14px;
-  line-height: 32px;
   border: 1px solid #ededf1;
   border-radius: 32px;
-  padding: 0 14px;
+  padding: 5px 14px;
   margin: 0 8px 8px 0;
 }
