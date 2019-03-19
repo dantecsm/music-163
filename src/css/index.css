@@ -271,6 +271,12 @@ main {
 .searchModule .resultList.active {
 	display: block;
 }
+.searchModule .resultList .emptyHint {
+  font-size: 14px;
+  text-align: center;
+  padding: 20px 0;
+  color: #333;
+}
 
 /* page-3-2 */
 .hotModule {
@@ -296,4 +302,40 @@ main {
   border-radius: 32px;
   padding: 5px 14px;
   margin: 0 8px 8px 0;
+}
+
+/* page 3-3 */
+.recentModule {
+  display: none;
+}
+.recentModule.active {
+  display: block;
+}
+.recentModule ul.recentList >li{
+  display: flex;
+  font-size: 14px;
+  padding-left: 9px;
+}
+.recentModule ul.recentList >li .icon {
+  width: 17px;
+  height: 17px;
+}
+.recentModule ul.recentList >li .delete-icon .icon{
+  width: 25px;
+  height: 25px;
+}
+.recentModule ul.recentList >li .wait-icon,
+.recentModule ul.recentList >li .delete-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recentModule ul.recentList >li .delete-icon {
+  padding-right: 12px;
+  border-bottom: 1px solid #eeeff0;
+}
+.recentModule ul.recentList >li p {
+  padding: 12px;
+  border-bottom: 1px solid #eeeff0;
+  flex-grow: 1;
 }

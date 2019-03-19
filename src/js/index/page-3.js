@@ -21,6 +21,7 @@
       this.bindEventHub()
       this.loadModule('./js/index/page-3-1.js')
       this.loadModule('./js/index/page-3-2.js')
+      this.loadModule('./js/index/page-3-3.js')
     },
     bindEventHub() {
     	window.eventHub.on('selectTab', tabName => {

@@ -4,16 +4,16 @@
     template: `
     <h6>热门搜索</h6>
     <ul class="tagBox">
-      <li class="tag"><a href="javascript:;">张艺兴远东韵律</a></li>
-      <li class="tag"><a href="javascript:;">吴青峰蜂鸟</a></li>
-      <li class="tag"><a href="javascript:;">董又霖就喜欢你</a></li>
-      <li class="tag"><a href="javascript:;">有一种悲伤</a></li>
-      <li class="tag"><a href="javascript:;">绿色</a></li>
-      <li class="tag"><a href="javascript:;">以团之名</a></li>
-      <li class="tag"><a href="javascript:;">起风了</a></li>
-      <li class="tag"><a href="javascript:;">我曾</a></li>
-      <li class="tag"><a href="javascript:;">告白之夜</a></li>
-      <li class="tag"><a href="javascript:;">阿丽塔</a></li>
+      <li class="tag">张艺兴远东韵律</li>
+      <li class="tag">有一种悲伤</li>
+      <li class="tag">起风了</li>
+      <li class="tag">绿色</li>
+      <li class="tag">只是太爱你</li>
+      <li class="tag">董又霖就喜欢你</li>
+      <li class="tag">以团之名</li>
+      <li class="tag">我曾</li>
+      <li class="tag">告白之夜</li>
+      <li class="tag">阿丽塔</li>
     </ul>
     `,
     render(data = {}) {
@@ -28,7 +28,14 @@
       this.view = view
       this.model = model
       this.view.render(this.model.data)
+      this.bindEvents()
       this.bindEventHub()
+    },
+    bindEvents() {
+      $(this.view.el).on('click', 'li', e => {
+        let text = $(e.currentTarget).text()
+        window.eventHub.emit('search', text)
+      })
     },
     bindEventHub() {
       window.eventHub.on('showHot', () => {

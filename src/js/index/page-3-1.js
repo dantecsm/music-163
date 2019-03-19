@@ -53,6 +53,9 @@
         </a>
       </li>
     `,
+    noResultTemplate: `
+      <div class="emptyHint">暂无搜索结果</div>
+    `,
     render(data = {}) {
     	$(this.el).html(this.template)
     },
@@ -69,7 +72,11 @@
         li = li.replace('__songSinger__', obj.singer)
         return $(li)
       })
-      this.find('ul.resultList').empty().append($liList)
+      if($liList.length === 0) {
+        this.find('ul.resultList').empty().append(this.noResultTemplate)
+      } else {
+        this.find('ul.resultList').empty().append($liList)
+      }
     }
   }
   let model = {
@@ -102,10 +109,17 @@
       this.lazyLoadHint = _.debounce(this.loadHint, 300)
       this.view.find('form').on('submit', e => {
         e.preventDefault()
+
+        this.hideHint()
+        this.hideRecent()
+        this.showResult()
+        window.eventHub.emit('hideHot')
+
         let val = $(e.currentTarget).find('[name="search"]').val()
+        if(val === '') return
+        window.historyStorage.push(val)
         this.model.search(val).then(arr => {
-          this.hideHint()
-          this.showResult()
+          val !== '' && this.view.find('form .clear-icon').addClass('active')
           this.view.renderResult(arr)
         })
       })
@@ -126,8 +140,7 @@
 
       $(this.view.el).on('click', '.hintList >li', e => {
         let text = $(e.currentTarget).find('p').text()
-        this.view.find('[name="search"]').val(text)
-        this.view.find('form').submit()
+        window.eventHub.emit('search', text)
       })
     },
     showHint() {
@@ -144,14 +157,23 @@
     hideResult() {
       this.view.find('.resultList').removeClass('active')
     },
+    hideRecent() {
+      window.eventHub.emit('hideRecent')
+    },
+    showRecent() {
+      window.eventHub.emit('showRecent')
+    },
     loadHint(val) {
       if (val === '') {
         this.hideHint()
         this.hideResult()
+        this.showRecent()
         window.eventHub.emit('showHot')
         return
       }
       this.showHint()
+      this.hideResult()
+      this.hideRecent()
       window.eventHub.emit('hideHot')
       this.view.find('#wd').text(`"${val}"`)
       this.model.fetch(val).then(arr => {
@@ -161,6 +183,10 @@
     bindEventHub() {
       window.eventHub.on('focusInput', e => {
         this.view.find('input.search').focus()
+      })
+      window.eventHub.on('search', string => {
+        this.view.find('[name="search"]').val(string)
+        this.view.find('form').submit()
       })
     }
   }
