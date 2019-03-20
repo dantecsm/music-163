@@ -15,5 +15,8 @@
     "qiniu": "^7.1.2",
     "qiniu-js": "^1.0.22",
     "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6"
   }
 }

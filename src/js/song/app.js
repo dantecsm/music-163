@@ -72,11 +72,11 @@
     	status: 'paused'
     },
     fetch(id) {
-			var song = new AV.Query('Song')
-			return song.get(id).then(item => {
-				this.data.song = {id, ...item.attributes}
-				return this.data
-			});
+		var song = new AV.Query('Song')
+		return song.get(id).then(item => {
+			this.data.song = {id, ...item.attributes}
+			return this.data
+		});
     }
   }
   let controller = {
