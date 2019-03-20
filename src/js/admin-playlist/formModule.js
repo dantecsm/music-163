@@ -6,7 +6,7 @@
     <form action="">
       <div class="row">
         <label for="">歌单名称</label>
-        <input name="songListName" type="text" value=__songListName__>
+        <input name="songListName" type="text" value="__songListName__">
       </div>
       <div class="row">
         <label for="">歌单封面</label>
@@ -38,6 +38,7 @@
   }
   let model = {
     data: {
+        uploaderId: '5c91e49f12215f0072937f76',
     	formData: {songListName: '', cover: '', resume: ''},
     	status: 'creating',
     	songListId: ''
@@ -46,9 +47,13 @@
     	let {songListName, cover, resume} = this.data.formData
     	let SongLists = AV.Object.extend('SongLists')
     	let songLists = new SongLists()
+        let uploader = AV.Object.createWithoutData('Users', this.data.uploaderId);
+
     	songLists.set('songListName', songListName)
     	songLists.set('cover', cover)
     	songLists.set('resume', resume)
+        songLists.set('uploader', uploader)
+
     	return songLists.save().then(() => {
     		alert('歌单创建成功!')
     	})
@@ -105,12 +110,13 @@
     	$(this.view.el).on('click', '[name="songListDel"]', () => {
     		console.log('尝试删除', this.model.data.songListId)
 
-				var songList = AV.Object.createWithoutData('SongLists', this.model.data.songListId)
-				songList.destroy().then(() => {
-					alert('歌单已移除！')
-					this.clearForm()
-					window.eventHub.emit('reloadSongList')
-				})
+			let songList = AV.Object.createWithoutData('SongLists', this.model.data.songListId)
+			songList.destroy().then(() => {
+				alert('歌单已移除！')
+                console.log('删除成功!')
+				this.clearForm()
+				window.eventHub.emit('reloadSongList')
+			})
     	})
     	$(this.view.el).on('click', '[name="showListedSongs"]', () => {
     		let id = this.model.data.songListId

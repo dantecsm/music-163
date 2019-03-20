@@ -1,0 +1,31 @@
+﻿leanCloud 的一对多操作原理
+在多的一方放一个指针属性, 指向少的一方
+把既有对象添加到一个列表
+var 列表 = AV.Object.createWithoutData('Province', 数据行id)
+var 元素 = AV.Object.createWithoutData('City', 数据行id)
+元素.set('xx属性', 列表)
+元素.save()
+var uploader = AV.Object.createWithoutData('Users', '5c91e49f12215f0072937f76')
+var playlist = AV.Object.createWithoutData('PlayLists', playListId)
+playlist.set('uploader', uploader)
+playlist.save()
+
+
+img 如何实现 background-size: cover 的效果？
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+filter:blur 白边的解决办法
+transform: scale(1.05)
+overflow: hidden
+
+todo:
+数据库应该加一个用户 user
+name:string | avator:string
+歌单数据库应该加列上传者和标签
+uploader: user-pointer | tags: array
+
+管理助手：可以预览效果，上网搜索歌曲对应的封面，歌词并直接添加到表单

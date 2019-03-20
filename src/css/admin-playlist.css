@@ -32,6 +32,7 @@ main >section.formModule {flex-grow: 1;}
 section.listModule {
 	display: flex;
 	flex-direction: column;
+	user-select: none;
 }
 .listModule ul.songLists {
 	flex-grow: 1;
@@ -100,7 +101,10 @@ form .row.action {padding-left: 5em;}
 form .row.action input {margin-right: 10px;}
 
 /* 歌曲列表模块 */
-section.songModule {background-color: #fff;}
+section.songModule {
+	background-color: #fff;
+	user-select: none;
+}
 ul.songs >li:nth-child(odd) {background-color: #f7f7f7;}
 ul.songs >li:nth-child(even) {background-color: #fefefe;}
 ul.songs >li.active {background-color: #ddd;}

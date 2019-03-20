@@ -1,12 +1,12 @@
-Èı¸öÄ£¿é
-µÚÒ»Ä£¿é data: 
+ï»¿ä¸‰ä¸ªæ¨¡å—
+ç¬¬ä¸€æ¨¡å— data: 
 {lists: [{id, songListName}], selectedSongListId}
-µÚ¶şÄ£¿é data: 
+ç¬¬äºŒæ¨¡å— data: 
 {formData: [song, cover, resume], status, songListId}
-µÚÈıÄ£¿é data: 
+ç¬¬ä¸‰æ¨¡å— data: 
 {lists: [{id, song}], status, songListId}
 
-Ã»ÓĞÆßÅ££¬´¿´â leanCloud ±à³Ì
+æ²¡æœ‰ä¸ƒç‰›ï¼Œçº¯ç²¹ leanCloud ç¼–ç¨‹
 
 eventHub
 createSongList
@@ -21,80 +21,65 @@ showUnListedSongs
 -showUnListedSongs
 
 
-µÚÒ»ÏµÍ³£º
-³õÊ¼»¯»á
-  µ÷ÓÃÖØÔØ¹¤¾ß
+ç¬¬ä¸€ç³»ç»Ÿï¼š
+åˆå§‹åŒ–ä¼š
+  è°ƒç”¨é‡è½½å·¥å…·
 on('reloadSongList')
-  µ÷ÓÃÖØÔØ¹¤¾ß
-µã»÷ĞÂ½¨»á
-  Çå³ı×Ô¼ºÉíÉÏµÄ selectedSongListId
-  Çå³ı×Ô¼ºÉíÉÏµÄ active Àà
-  emit('createSongList')£¬Í¨ÖªµÚ¶şÏµÍ³ÇåÀí±íµ¥
-µã»÷ÁĞ±íÉÏµÄ¸è»á
-  ¸³Öµ selectedSongListId ²¢´¥·¢±êÇ© active
-  emit('selectSongList', selectedSongListId)£¬Í¨ÖªµÚ¶şÏµÍ³Ìî³ä±íµ¥
-ÖØÔØ¹¤¾ß
-  ´Ó leanCloud ÇëÇóÊı¾İÌî³ä lists
-  äÖÈ¾Ä£ĞÍµ½ÊÓÍ¼
+  è°ƒç”¨é‡è½½å·¥å…·
+ç‚¹å‡»æ–°å»ºä¼š
+  æ¸…é™¤è‡ªå·±èº«ä¸Šçš„ selectedSongListId
+  æ¸…é™¤è‡ªå·±èº«ä¸Šçš„ active ç±»
+  emit('createSongList')ï¼Œé€šçŸ¥ç¬¬äºŒç³»ç»Ÿæ¸…ç†è¡¨å•
+ç‚¹å‡»åˆ—è¡¨ä¸Šçš„æ­Œä¼š
+  èµ‹å€¼ selectedSongListId å¹¶è§¦å‘æ ‡ç­¾ active
+  emit('selectSongList', selectedSongListId)ï¼Œé€šçŸ¥ç¬¬äºŒç³»ç»Ÿå¡«å……è¡¨å•
+é‡è½½å·¥å…·
+  ä» leanCloud è¯·æ±‚æ•°æ®å¡«å…… lists
+  æ¸²æŸ“æ¨¡å‹åˆ°è§†å›¾
 
-µÚ¶şÏµÍ³£º
-³õÊ¼»¯»á
-  ¸³Öµ status Îª creating
-  äÖÈ¾¿ÕÄ£ĞÍµ½ÊÓÍ¼
+ç¬¬äºŒç³»ç»Ÿï¼š
+åˆå§‹åŒ–ä¼š
+  èµ‹å€¼ status ä¸º creating
+  æ¸²æŸ“ç©ºæ¨¡å‹åˆ°è§†å›¾
 on('createSongList')
-  »á¸ü¸Ä status Îª creating£¬¸ü¸Ä±íÍ·Îª¡°´´½¨¸èµ¥¡±
-  »á½« songListId ¸³ÖµÎª¿Õ
-  ÇåÀí±íµ¥
+  ä¼šæ›´æ”¹ status ä¸º creatingï¼Œæ›´æ”¹è¡¨å¤´ä¸ºâ€œåˆ›å»ºæ­Œå•â€
+  ä¼šå°† songListId èµ‹å€¼ä¸ºç©º
+  æ¸…ç†è¡¨å•
 on('selectSongList', selectedSongListId)
-  »á¸ü¸Ä status Îª editing£¬¸ü¸Ä±íÍ·Îª¡°±à¼­¸èµ¥¡±
-  »á½« songListId ¸³ÖµÎª selectedSongListId
-  ´Ó leanCloud ²éÑ¯ songListId »ñÈ¡Êı¾İÌî³ä formData
-  äÖÈ¾Ä£ĞÍµ½ÊÓÍ¼
-µã»÷¸Ä»á
-  ÊÕ¼¯±íµ¥ÉÏµÄÊı¾İÎª formData
-  ¶ÁÈ¡ status Îª editing »ò creating
-  ¸ù¾İ status ÃüÁîÄ£ĞÍÃüÁî leanCloud ¸üĞÂ»ò´´½¨¸èµ¥Êı¾İ
-  then Àï emit('reloadSongList')
-µã»÷É¾»á
-  ¸ù¾İ×Ô¼ºµÄ songListId ÃüÁîÄ£ĞÍÃüÁî leanCloud É¾³ı¸èµ¥
-  then Àï emit('reloadSongList')
-µã»÷²é¼º»á
-  ¸ù¾İ×Ô¼ºµÄ songListId emit('showListedSongs', songListId)
-µã»÷²éËü»á
-  ¸ù¾İ×Ô¼ºµÄ songListId emit('showUnListedSongs', songListId)
+  ä¼šæ›´æ”¹ status ä¸º editingï¼Œæ›´æ”¹è¡¨å¤´ä¸ºâ€œç¼–è¾‘æ­Œå•â€
+  ä¼šå°† songListId èµ‹å€¼ä¸º selectedSongListId
+  ä» leanCloud æŸ¥è¯¢ songListId è·å–æ•°æ®å¡«å…… formData
+  æ¸²æŸ“æ¨¡å‹åˆ°è§†å›¾
+ç‚¹å‡»æ”¹ä¼š
+  æ”¶é›†è¡¨å•ä¸Šçš„æ•°æ®ä¸º formData
+  è¯»å– status ä¸º editing æˆ– creating
+  æ ¹æ® status å‘½ä»¤æ¨¡å‹å‘½ä»¤ leanCloud æ›´æ–°æˆ–åˆ›å»ºæ­Œå•æ•°æ®
+  then é‡Œ emit('reloadSongList')
+ç‚¹å‡»åˆ ä¼š
+  æ ¹æ®è‡ªå·±çš„ songListId å‘½ä»¤æ¨¡å‹å‘½ä»¤ leanCloud åˆ é™¤æ­Œå•
+  then é‡Œ emit('reloadSongList')
+ç‚¹å‡»æŸ¥å·±ä¼š
+  æ ¹æ®è‡ªå·±çš„ songListId emit('showListedSongs', songListId)
+ç‚¹å‡»æŸ¥å®ƒä¼š
+  æ ¹æ®è‡ªå·±çš„ songListId emit('showUnListedSongs', songListId)
 
-µÚÈıÏµÍ³£º
-³õÊ¼»¯»á
-  äÖÈ¾¿ÕÄ£ĞÍµ½ÊÓÍ¼
+ç¬¬ä¸‰ç³»ç»Ÿï¼š
+åˆå§‹åŒ–ä¼š
+  æ¸²æŸ“ç©ºæ¨¡å‹åˆ°è§†å›¾
 on('showListedSongs', songListId)
-  ĞŞ¸Ä status Îª showListedSongs
-  µ÷ÓÃÖØÔØ¹¤¾ß
+  ä¿®æ”¹ status ä¸º showListedSongs
+  è°ƒç”¨é‡è½½å·¥å…·
 on('showUnListedSongs', songListId)
-  ĞŞ¸Ä status Îª showUnlistedSongs
-  µ÷ÓÃÖØÔØ¹¤¾ß
-µã»÷Í¼±ê»á
-  ¶ÁÈ¡ status Óë songListId, ¸ù¾İÈ¡ÖµÑ¡ÔñÉ¾³ı¸èÇú»¹ÊÇÌí¼Ó¸èÇú
-    É¾³ı¸èÇúÃüÁîÄ£ĞÍÃüÁî leanCloud Îª songListId É¾³ı¸èÇú
-    Ìí¼Ó¸èÇúÃüÁîÄ£ĞÍÃüÁî leanCloud Îª songListId Ìí¼Ó¸èÇú
-  then Àïµ÷ÓÃÖØÔØ¹¤¾ß
-ÖØÔØ¹¤¾ß
-  »á¶ÁÈ¡ status ¾ö¶¨ÊÇ°üº¬»¹ÊÇ²»°üº¬¸èµ¥
-  »á¶ÁÈ¡ songListId
-  ¸ù¾İ status ºÍ songListId ²éÑ¯¸èÇúÌî³äµ½ lists
-  Ä£ĞÍäÖÈ¾µ½ÊÓÍ¼
+  ä¿®æ”¹ status ä¸º showUnlistedSongs
+  è°ƒç”¨é‡è½½å·¥å…·
+ç‚¹å‡»å›¾æ ‡ä¼š
+  è¯»å– status ä¸ songListId, æ ¹æ®å–å€¼é€‰æ‹©åˆ é™¤æ­Œæ›²è¿˜æ˜¯æ·»åŠ æ­Œæ›²
+    åˆ é™¤æ­Œæ›²å‘½ä»¤æ¨¡å‹å‘½ä»¤ leanCloud ä¸º songListId åˆ é™¤æ­Œæ›²
+    æ·»åŠ æ­Œæ›²å‘½ä»¤æ¨¡å‹å‘½ä»¤ leanCloud ä¸º songListId æ·»åŠ æ­Œæ›²
+  then é‡Œè°ƒç”¨é‡è½½å·¥å…·
+é‡è½½å·¥å…·
+  ä¼šè¯»å– status å†³å®šæ˜¯åŒ…å«è¿˜æ˜¯ä¸åŒ…å«æ­Œå•
+  ä¼šè¯»å– songListId
+  æ ¹æ® status å’Œ songListId æŸ¥è¯¢æ­Œæ›²å¡«å……åˆ° lists
+  æ¨¡å‹æ¸²æŸ“åˆ°è§†å›¾
 
-
-
-
-leanCloud µÄÒ»¶Ô¶à²Ù×÷Ô­Àí
-ÔÚ¶àµÄÒ»·½·ÅÒ»¸öÖ¸ÕëÊôĞÔ, Ö¸ÏòÉÙµÄÒ»·½
-°Ñ¼ÈÓĞ¶ÔÏóÌí¼Óµ½Ò»¸öÁĞ±í
-var ÁĞ±í = AV.Object.createWithoutData('Province', Êı¾İĞĞid)
-var ÔªËØ = AV.Object.createWithoutData('City', Êı¾İĞĞid)
-ÔªËØ.set('xxÊôĞÔ', ÁĞ±í)
-ÔªËØ.save()
-
-img ÈçºÎÊµÏÖ background-size: cover µÄĞ§¹û£¿
-object-fit: cover;
-
-¹ÜÀíÖúÊÖ£º¿ÉÒÔÔ¤ÀÀĞ§¹û£¬ÉÏÍøËÑË÷¸èÇú¶ÔÓ¦µÄ·âÃæ£¬¸è´Ê²¢Ö±½ÓÌí¼Óµ½±íµ¥

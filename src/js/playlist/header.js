@@ -23,10 +23,10 @@
     	let {name, avator} = uploader
     	let html = this.template
 
-  		html = html.replace('__cover__', cover)
-  		html = html.replace('__cover__', cover)
-  		html = html.replace('__title__', title)
-  		html = html.replace('__name__', name)
+  		html = html.replace('__cover__', cover || 'https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg')
+  		html = html.replace('__cover__', cover || 'https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg')
+  		html = html.replace('__title__', title || '')
+  		html = html.replace('__name__', name || '')
   		html = html.replace('__avator__', avator)
     	$(this.el).html(html)
     }
@@ -46,11 +46,14 @@
 			return songLists.get(id).then(item => {
 				this.data.cover = item.attributes.cover
 				this.data.title = item.attributes.songListName
-
-				this.data.uploader = {name: '莫筱亓', avator: 'http://p1.music.126.net/bB_C8U-wQaVpb6dzebuMOg==/19231557881542823.webp?imageView&thumbnail=90x0&quality=75&tostatic=0&type=webp'}
-
-				return this.data
-			});
+				return item.attributes.uploader
+			}).then(uploader => {
+        let query = new AV.Query('Users')
+        return query.get(uploader.id).then(user => {
+          this.data.uploader = {name: user.attributes.name, avator: user.attributes.avator}
+          return this.data
+        })
+      });
     },
     getId() {
     	let hash = {}

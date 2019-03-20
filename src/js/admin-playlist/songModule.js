@@ -48,6 +48,10 @@
     	$(this.view.el).on('click', 'li', e => {
     		$(e.currentTarget).addClass('active').siblings('.active').removeClass('active')
     	})
+      $(this.view.el).on('dblclick', 'li', e => {
+        let btn = this.model.data.status === 'showListedSongs'? '.remove': '.add'
+        $(e.currentTarget).find(btn).trigger('click')
+      })
     	$(this.view.el).on('click', '.add', e => {
     		let $li = $(e.currentTarget).closest('li')
     		let songId = $li.attr('data-song-id')
