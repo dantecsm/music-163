@@ -1,4 +1,4 @@
-{
+// {
   let view = {
     el: 'section.playListIntro',
     template: `
@@ -18,8 +18,9 @@
     	let {tagList, resume} = data
     	let html = this.template
 
-    	let tags = tagList.map(tag => `<em>${tag}</em>`)
-    	html = html.replace('__tagList__', tags.join(''))
+    	let tags = tagList.map(tag => tag && `<em>${tag}</em>`)
+      let el = tags.length !== 0? tags.join(''): '未添加'
+    	html = html.replace('__tagList__', el)
 
     	resume = '简介:' + resume
     	let spanList = resume.split('\n').map(line => `<span><i>${line}</i><br></span>`)
@@ -36,9 +37,9 @@
     	let id = this.getId()
     	let songLists = new AV.Query('SongLists')
 			return songLists.get(id).then(item => {
-
-				this.data.tagList = ['ACG', '日语', '流行']
-				
+        let tagList = item.attributes.tagList
+        
+				this.data.tagList = tagList? tagList.split(' '): []
 				this.data.resume = item.attributes.resume
 				return this.data
 			});
@@ -70,4 +71,4 @@
     }
   }
   controller.init(view, model)
-}
+// }

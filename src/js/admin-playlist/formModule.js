@@ -9,6 +9,10 @@
         <input name="songListName" type="text" value="__songListName__">
       </div>
       <div class="row">
+        <label for="">歌单标签</label>
+        <input name="tagList" type="text" value="__tagList__">
+      </div>
+      <div class="row">
         <label for="">歌单封面</label>
         <input name="cover" type="text" value=__cover__>
         <input name="coverUp" id="coverUpBtn" type="button" value="···">
@@ -28,7 +32,7 @@
     render(data) {
 		let {formData, status} = data
     	let html = this.template
-		let needs = 'songListName cover resume'
+		let needs = 'songListName tagList cover resume'
 		needs.split(' ').map(string => {
 			html = html.replace(`__${string}__`, formData[string] || '')
 		})
@@ -39,17 +43,18 @@
   let model = {
     data: {
         uploaderId: '5c91e49f12215f0072937f76',
-    	formData: {songListName: '', cover: '', resume: ''},
+    	formData: {songListName: '', tagList: '', cover: '', resume: ''},
     	status: 'creating',
     	songListId: ''
     },
     create() {
-    	let {songListName, cover, resume} = this.data.formData
+    	let {songListName, tagList, cover, resume} = this.data.formData
     	let SongLists = AV.Object.extend('SongLists')
     	let songLists = new SongLists()
         let uploader = AV.Object.createWithoutData('Users', this.data.uploaderId);
 
     	songLists.set('songListName', songListName)
+        songLists.set('tagList', tagList)
     	songLists.set('cover', cover)
     	songLists.set('resume', resume)
         songLists.set('uploader', uploader)
@@ -59,9 +64,10 @@
     	})
     },
     update() {
-    	let {songListName, cover, resume} = this.data.formData
+    	let {songListName, tagList, cover, resume} = this.data.formData
     	let songLists = AV.Object.createWithoutData('SongLists', this.data.songListId)
     	songLists.set('songListName', songListName)
+        songLists.set('tagList', tagList)
     	songLists.set('cover', cover)
     	songLists.set('resume', resume)
     	return songLists.save().then(() => {
@@ -84,10 +90,10 @@
     		this.clearForm()
     	})
     	window.eventHub.on('selectSongList', data => {
-    		let {id, songListName, cover, resume} = data
+    		let {id, songListName, tagList, cover, resume} = data
     		this.model.data.status = 'editing'
     		this.model.data.songListId = id
-    		this.model.data.formData = {songListName, cover, resume}
+    		this.model.data.formData = {songListName, tagList, cover, resume}
 		    this.view.render(this.model.data)
             window.eventHub.emit('showListedSongs', id)
     	})
@@ -99,7 +105,7 @@
     	$(this.view.el).on('submit', 'form', e => {
     		e.preventDefault()
 
-				let needs = 'songListName cover resume'
+				let needs = 'songListName tagList cover resume'
 				let formData = {}
 				needs.split(' ').map(string => {
 					formData[string] = $(this.view.el).find(`[name=${string}]`).val()
