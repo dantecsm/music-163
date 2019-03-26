@@ -1,11 +1,11 @@
 # 使用方法
 
-1. 仓库同目录下新建 qiniu-key.json 文件，内容如下
+1. 仓库同目录下新建 qiniu-key.json 文件，自行提供七牛云任一可用 bucket 的公钥与私钥
 
    ```JSON
    {
-   	"accessKey": "xxxx",  // 七牛云一个 bucket 的 accessKey
-   	"secretKey": "yyyy"  // 七牛云一个 bucket 的 secretKey
+   	"accessKey": "xxxx",
+   	"secretKey": "yyyy"
    }
    ```
 
@@ -33,37 +33,37 @@ http-server -c-1
    主页（推荐歌单，最新音乐，svg 图标）
    ![移动端页面1.png](https://i.loli.net/2019/03/26/5c9a20f92952c.png)
 
-   
+   ---
 
    热歌榜
    ![移动端页面2.png](https://i.loli.net/2019/03/26/5c9a20f827563.png)
 
-   
+   ---
 
    主页（搜索界面，热门搜索，缓存搜索）
    ![移动端页面3.png](https://i.loli.net/2019/03/26/5c9a20f7ea2b5.png)
 
-   
+   ---
 
    （搜索提示）
    ![移动端页面4.png](https://i.loli.net/2019/03/26/5c9a20f7c21bb.png)
 
-   
+   ---
 
    歌单页（毛玻璃背景，文字折叠）
    ![移动端页面5.png](https://i.loli.net/2019/03/26/5c9a20f85bc0f.png)
 
-   
+   ---
 
    歌曲播放页（icon 动画,歌词滚动）
    ![移动端页面6.png](https://i.loli.net/2019/03/26/5c9a20f9498f8.png)
 
-   
+   ---
 
    歌曲管理（可增删修改歌曲，上传动画，管理小精灵可交互完成相关功能）
    ![管理页面1.png](https://i.loli.net/2019/03/26/5c9a20f80e8fe.png)
 
-   
+   ---
 
    歌单管理（可增删修改歌单）
    ![管理页面2.png](https://i.loli.net/2019/03/26/5c9a20f7eef15.png)
