@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>我的云音乐</title>
+	<link rel="stylesheet" href="./css/loadingNewestMusic.css">
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+	<div class="page">
+		<header class="sticky">
+			<div class="topbar">
+				<div class="logo" data-logo-name="headerLogo"></div>
+				<a class="button">下载APP</a>
+			</div>
+			<ul class="tabs">
+				<li class="active" data-tab-name="page-1">推荐音乐</li>
+				<li data-tab-name="page-2">热歌榜</li>
+				<li data-tab-name="page-3">搜索</li>
+			</ul>
+		</header>
+		<main>
+			<ul class="tabContent">
+				<li class="page-1 active">
+					<section class="recommend">
+						<h2 class="sectionTitle">推荐歌单</h1>
+							<ul class="recommendSongs"></ul>
+						</section>
+						<section class="newest">
+							<h2 class="sectionTitle">最新音乐</h1>
+								<ul class="newestSongs songList">
+									<div class="loading active"></div>
+								</ul>
+							</section>
+							<section class="footer">
+								<div class="logo" data-logo-name="footerLogo"></div>
+								<a href="javascript:;">打开APP,发现更多好音乐 ></a>
+								<div class="copyright">网易公司版权所有©1997-2017 杭州乐读科技有限公司运营</div>
+							</section>
+						</li>
+						<li class="page-2">
+							<section class="banner">
+								<img src="./img/hot_music_bg_2x.png" alt="">
+							</section>
+							<section class="popular">
+								<ul class="popularSongs songList">
+								</ul>
+							</section>
+						</li>
+						<li class="page-3">
+							<section class="searchModule"></section>
+							<section class="hotModule active"></section>
+							<section class="recentModule active"></section>
+						</li>
+					</ul>
+				</main>
+			</div>
+			<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+			<script src="./node_modules/underscore/underscore-min.js"></script>
+			<script src="./node_modules/leancloud-storage/dist/av-min.js"></script>
+			<script src="./js/initializers/av.js"></script>
+			<script src="//at.alicdn.com/t/font_1084649_tdk9fz2g1d.js"></script>
+			<script src="./js/admin/eventHub.js"></script>
+			<script src="./js/index/historyStorage.js"></script>
+			<script src="./js/index/svg.js"></script>
+			<script src="./js/index/loading.js"></script>
+			<script src="./js/index/tabs.js"></script>
+			<script src="./js/index/page-1.js"></script>
+			<script src="./js/index/page-2.js"></script>
+			<script src="./js/index/page-3.js"></script>
+		</body>
+		</html>

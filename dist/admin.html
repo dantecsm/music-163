@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理页面</title>
+	<link rel="stylesheet" href="./css/admin.css">
+	<link rel="stylesheet" href="./css/loading.css">
+</head>
+<body>
+	<div class="topbar">
+		<div class="logo"></div>
+	</div>
+	<div class="page">
+		<aside>
+			<div id="newSong" class="newSong"></div>
+			<div id="songList" class="songList"></div>
+			<div class="uploadArea">
+				<div id="uploadContainer" class="draggable">
+					<div id="uploadButton" class="clickable">
+						<p>新增歌曲</p>
+						<span>点击或拖曳文件</span>
+					</div>
+				</div>
+				<div id="uploadStatus"></div>
+				<input type="file" id="uploadCover">
+				<input type="file" id="uploadLyric">
+			</div>
+		</aside>
+		<main></main>
+		<preview>
+			<audio src="#" crossOrigin="anonymous"></audio>
+			<div class="coverBox"></div>
+	    <div class="spirit"></div>
+		</preview>
+	</div> <!-- page -->
+	<div class="loading"></div>
+
+	<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+	<script src='./js/initializers/av.js'></script>
+	<script src="../vendors/moxie.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/plupload/js/plupload.min.js"></script>
+	<script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
+	<script src="./js/admin/eventHub.js"></script>
+	<script src="./js/admin/logo.js"></script>
+	<script src="./js/admin/song-list.js"></script>
+	<script src="./js/admin/song-form.js"></script>
+	<script src="./js/admin/preview.js"></script>
+	<script src="./js/admin/new-song.js"></script>
+	<script src="./js/admin/upload-qiniu.js"></script>
+	<script src="./js/admin/loading.js"></script>
+</body>
+</html>
