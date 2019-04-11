@@ -1,5 +1,2 @@
-/node_modules
-/qiniu-key.json
-/reference
-/歌单管理设计稿.png
-/歌单管理伪代码.txt
+node_modules/
+reference/
