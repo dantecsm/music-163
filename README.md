@@ -1,11 +1,11 @@
 # 使用方法
 
-1. 仓库同目录下新建 qiniu-key.json 文件，自行提供七牛云任一可用 bucket 的公钥与私钥
+1. 仓库同目录下的 qiniu-key.json 文件，如果可以的话，请自行提供七牛云任一可用 bucket 的公钥与私钥
 
    ```JSON
    {
-   	"accessKey": "xxxx",
-   	"secretKey": "yyyy"
+   	"accessKey": "xxxx",  // 这里填对象存储的公钥
+   	"secretKey": "yyyy"   // 这里填对象存储的私钥
    }
    ```
 
@@ -19,7 +19,7 @@ npm install
 
 
 
-3. **在根目录**启用后台管理，启用 http 服务
+3. **根目录下**，先启用后台管理，再启用 http 服务
 
 ```bash
 node server 8888
@@ -28,7 +28,10 @@ http-server -c-1
 
 
 
-4. 在命令行提示的网址下打开网站，进入 src 目录，对应路径下打开页面
+4. 对应路径打开页面。应用请在移动端查看(注意将 localhost 替换成 http-server 提示的 ip)，管理页面在 PC 端打开
+- 应用入口：[http://localhost:8080/src/index.html](http://localhost:8080/src/index.html)
+- 歌曲管理：[http://localhost:8080/src/admin.html](http://localhost:8080/src/admin.html)
+- 歌单管理：[http://localhost:8080/src/admin-playlist.html](http://localhost:8080/src/admin-playlist.html)
 
 ![移动端页面1.png](https://i.loli.net/2019/03/26/5c9a20f92952c.png)![移动端页面2.png](https://i.loli.net/2019/03/26/5c9a20f827563.png)
 
@@ -37,11 +40,11 @@ http-server -c-1
 ![移动端页面5.png](https://i.loli.net/2019/03/26/5c9a20f85bc0f.png)![移动端页面6.png](https://i.loli.net/2019/03/26/5c9a20f9498f8.png)
 
 ---
-歌曲管理（可增删修改歌曲，上传动画，管理小精灵可交互完成相关功能）
+歌曲管理（歌曲信息增删改查，点击左下角添加本地音乐，点击右下角小精灵预览歌曲）
 
 ![管理页面1.png](https://i.loli.net/2019/03/26/5c9a20f80e8fe.png)
 
 ---
-歌单管理（可增删修改歌单）
+歌单管理（歌单信息增删改查）
 
 ![管理页面2.png](https://i.loli.net/2019/03/26/5c9a20f7eef15.png)   

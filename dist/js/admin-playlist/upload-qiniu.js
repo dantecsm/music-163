@@ -23,7 +23,7 @@
 			runtimes: 'html5',
 			browse_button: this.view.find('#uploadCover'),
 			uptoken_url: 'http://localhost:8888/uptoken',
-			domain: 'http://simenchan.xyz',
+			domain: 'http://qn.simenchan.xyz',
 			get_new_uptoken: false,
 			max_file_size: '40mb',
 			auto_start: true,
