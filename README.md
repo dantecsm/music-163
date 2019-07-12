@@ -4,29 +4,29 @@
 
    ```JSON
    {
-   	"accessKey": "xxxx",  // 这里填对象存储的公钥
-   	"secretKey": "yyyy"   // 这里填对象存储的私钥
+   	"accessKey": "xxxx",
+   	"secretKey": "yyyy"
    }
    ```
-
-
+&nbsp;
+&nbsp;
 
 2. 安装依赖
 
 ```bash
 npm install
 ```
+&nbsp;
+&nbsp;
 
-
-
-3. **根目录下**，先启用后台管理，再启用 http 服务
+3. **根目录下**，依次启用后台管理和启用 http 服务
 
 ```bash
 node server 8888
 http-server -c-1
 ```
-
-
+&nbsp;
+&nbsp;
 
 4. 对应路径打开页面。应用请在移动端查看(注意将 localhost 替换成 http-server 提示的 ip)，管理页面在 PC 端打开
 - 应用入口：[http://localhost:8080/src/index.html](http://localhost:8080/src/index.html)
