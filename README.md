@@ -1,4 +1,5 @@
 # 使用方法
+&nbsp;
 
 1. 仓库同目录下的 qiniu-key.json 文件，如果可以的话，请自行提供七牛云任一可用 bucket 的公钥与私钥
 
@@ -9,14 +10,12 @@
    }
    ```
 &nbsp;
-&nbsp;
 
 2. 安装依赖
 
 ```bash
 npm install
 ```
-&nbsp;
 &nbsp;
 
 3. **根目录下**，依次启用后台管理和启用 http 服务
@@ -25,7 +24,6 @@ npm install
 node server 8888
 http-server -c-1
 ```
-&nbsp;
 &nbsp;
 
 4. 对应路径打开页面。应用请在移动端查看(注意将 localhost 替换成 http-server 提示的 ip)，管理页面在 PC 端打开
