@@ -1,3 +1,7 @@
+# 项目预览
+&nbsp;
+https://dantecsm.github.io/music-163/dist/index.html
+
 # 使用方法
 &nbsp;
 
@@ -18,7 +22,7 @@ npm install
 ```
 &nbsp;
 
-3. **根目录下**，依次启用后台管理和启用 http 服务
+3. **根目录下**，依次启用后台管理和 http 服务
 
 ```bash
 node server 8888
@@ -27,6 +31,7 @@ http-server -c-1
 &nbsp;
 
 4. 对应路径打开页面。应用请在移动端查看(注意将 localhost 替换成 http-server 提示的 ip)，管理页面在 PC 端打开
+&nbsp;
 - 应用入口：[http://localhost:8080/src/index.html](http://localhost:8080/src/index.html)
 - 歌曲管理：[http://localhost:8080/src/admin.html](http://localhost:8080/src/admin.html)
 - 歌单管理：[http://localhost:8080/src/admin-playlist.html](http://localhost:8080/src/admin-playlist.html)
