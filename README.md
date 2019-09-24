@@ -6,7 +6,7 @@ https://dantecsm.github.io/music-163/dist/index.html
 # 使用方法
 &nbsp;
 
-1. 仓库同目录下的 qiniu-key.json 文件，如果可以的话，请自行提供七牛云任一可用 bucket 的公钥与私钥
+1. 仓库同目录下的 qiniu-key.json 文件，如果可以的话，请自行提供七牛云任一可用 bucket 的公钥与私钥（不提供也可以，默认用我的账号）
 
    ```JSON
    {
