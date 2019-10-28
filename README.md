@@ -37,18 +37,34 @@ http-server -c-1
 - 歌曲管理：[http://localhost:8080/src/admin.html](http://localhost:8080/src/admin.html)
 - 歌单管理：[http://localhost:8080/src/admin-playlist.html](http://localhost:8080/src/admin-playlist.html)
 
-![移动端页面1.png](https://i.loli.net/2019/03/26/5c9a20f92952c.png)![移动端页面2.png](https://i.loli.net/2019/03/26/5c9a20f827563.png)
+![移动端页面1.png][1]![移动端页面2.png][2]
 
-![移动端页面3.png](https://i.loli.net/2019/03/26/5c9a20f7ea2b5.png)![移动端页面4.png](https://i.loli.net/2019/03/26/5c9a20f7c21bb.png)
+![移动端页面3.png][3]![移动端页面4.png][4]
 
-![移动端页面5.png](https://i.loli.net/2019/03/26/5c9a20f85bc0f.png)![移动端页面6.png](https://i.loli.net/2019/03/26/5c9a20f9498f8.png)
+![移动端页面5.png][5]![移动端页面6.png][6]
 
 ---
 歌曲管理（歌曲信息增删改查，点击左下角添加本地音乐，点击右下角小精灵预览歌曲）
 
-![管理页面1.png](https://i.loli.net/2019/03/26/5c9a20f80e8fe.png)
+![管理页面1.png][7]
 
 ---
 歌单管理（歌单信息增删改查）
 
-![管理页面2.png](https://i.loli.net/2019/03/26/5c9a20f7eef15.png)   
+![管理页面2.png][8]   
+
+
+
+[1]: http://qn.simenchan.xyz/5c9a20f92952c.png
+[2]: http://qn.simenchan.xyz/5c9a20f827563.png
+[3]: http://qn.simenchan.xyz/5c9a20f7ea2b5.png
+[4]: http://qn.simenchan.xyz/5c9a20f7c21bb.png
+[5]: http://qn.simenchan.xyz/5c9a20f85bc0f.png
+[6]: http://qn.simenchan.xyz/5c9a20f9498f8.png
+[7]: http://qn.simenchan.xyz/5c9a20f80e8fe.png
+[8]: http://qn.simenchan.xyz/5c9a20f7eef15.png
+
+
+
+
+
