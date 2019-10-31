@@ -1,5 +1,5 @@
 /**
- * mOxie - multi-runtime File API & XMLHttpRequest L2 Polyfill
+ * mOxie: multi-runtime File API & XMLHttpRequest L2 Polyfill
  * v1.5.6
  *
  * Copyright 2013, Moxiecode Systems AB
