@@ -18,7 +18,7 @@ var server = http.createServer(function(request, response){
   var query = parsedUrl.query
   var method = request.method
 
-  /******** 从这里开始看，上面不要看 ************/
+  /******** 从这里开始看 ************/
 
   console.log('含查询字符串的路径\n' + pathWithQuery)
 
@@ -49,7 +49,7 @@ var server = http.createServer(function(request, response){
     response.end()
   }
 
-  /******** 代码结束，下面不要看 ************/
+  /******** 代码结束 ************/
 })
 
 server.listen(port)
