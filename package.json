@@ -12,7 +12,7 @@
   "dependencies": {
     "jquery": "^3.3.1",
     "leancloud-storage": "^3.6.0",
-    "plupload": "^2.3.2",
+    "plupload": "^2.3.9",
     "qiniu": "^7.1.2",
     "qiniu-js": "^1.0.22",
     "underscore": "^1.9.1"
